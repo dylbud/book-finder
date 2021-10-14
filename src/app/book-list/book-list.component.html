@@ -1,0 +1,6 @@
+<section *ngIf="bookList$ | async as list">
+    <div *ngFor="let item of list">
+       <img [src]="item.volumeInfo.imageLinks.smallThumbnail" />
+
+    </div>
+</section>
