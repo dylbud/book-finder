@@ -1,6 +1,14 @@
-<section *ngIf="bookList$ | async as list">
-    <div *ngFor="let item of list">
-       <img [src]="item.volumeInfo.imageLinks.smallThumbnail" />
+<mat-form-field appearance="fill">
+    <mat-label>Search for books</mat-label>
+    <input matInput [formControl]="searchTerm" />
+  </mat-form-field>
 
+
+<section *ngIf="bookList$ | async as list">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <div *ngFor="let item of list">
+            <app-book-card [book]="item"></app-book-card>
+    
+        </div>
     </div>
 </section>

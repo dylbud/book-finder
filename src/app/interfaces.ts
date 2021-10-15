@@ -2,5 +2,9 @@ export interface IBook {
   authors: string[];
   title: string;
   publishedDate: Date;
-  imageLinks: Object;
+  imageLinks: IImageLinks;
+}
+
+export interface IImageLinks {
+  smallThumbnail: string;
 }

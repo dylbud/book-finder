@@ -13,23 +13,26 @@ export class BookService {
   booksApi: string = "https://www.googleapis.com/books/v1/volumes";
   constructor(private http: HttpClient) {}
 
-  getBooks(queryString: string): Observable<any[]> {
-    const url: string = `${this.booksApi}?q=${queryString}&key=${this.apiKey}`;
-    const data$ = this.http.get<any>(url).pipe(
-      map((data) => {
-        if (data.items) {
-          return data.items.map((b) => {
-            const book: IBook = {
-              authors: b.volumeInfo.authors,
-              title: b.volumeInfo.title,
-              publishedDate: b.volumeInfo.publishedDate,
-              imageLinks: b.volumeInfo.imageLinks
-            };
-            return book;
-          });
-        }
-      })
-    );
+  getBooks(queryString: string): Observable<IBook[]> {
+    let data$ = new Observable<IBook[]>();
+    if (queryString.trim().length > 0) {
+      const url: string = `${this.booksApi}?q=${queryString}&key=${this.apiKey}`;
+      data$ = this.http.get<any>(url).pipe(
+        map((data) => {
+          if (data.items) {
+            return data.items.map((b) => {
+              const book: IBook = {
+                authors: b.volumeInfo.authors,
+                title: b.volumeInfo.title,
+                publishedDate: b.volumeInfo.publishedDate,
+                imageLinks: b.volumeInfo.imageLinks
+              };
+              return book;
+            });
+          }
+        })
+      );
+    }
     return data$;
   }
 }
