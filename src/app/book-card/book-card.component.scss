@@ -1,7 +1,26 @@
 .mat-card-title {
     font-size: small;
+    color: white;
 }
 
 .mat-card-image {
     width: 200px;
+    position: bottom;
+    bottom: 48px;
+}
+
+.mat-card {
+    width: 168px;
+    height: 450px;
+    background-color: rgba($color: brown, $alpha: 0.68);
+}
+
+.mat-card-subtitle {
+    text-decoration-style: italic;
+    font-size: x-small;
+    color: beige;
+}
+
+.mat-card-title-group {
+
 }

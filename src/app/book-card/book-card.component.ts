@@ -10,4 +10,12 @@ export class BookCardComponent {
   @Input() book: IBook;
 
   constructor() {}
+
+  authorsList(authors: string[]): string {
+    return authors ? authors.join(", ") : "";
+  }
+
+  formatedTitle(title: string): string {
+    return title.length <= 80 ? title : `${title.substring(0, 48)}...`;
+  }
 }
