@@ -1,16 +1,17 @@
 <div class="library-background">
-  <mat-form-field appearance="fill">
-    <mat-label>Search for books</mat-label>
-    <input matInput [formControl]="searchTerm" />
-  </mat-form-field>
-
-
-<section *ngIf="bookList$ | async as list">
-    <div fxLayout="row wrap" fxLayoutGap="32px grid" fxLayoutAlign="flex-start">
-        <div *ngFor="let item of list">
-            <app-book-card [book]="item"></app-book-card>
-        </div>
+  <div class="form-field-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Search for books</mat-label>
+      <input matInput [formControl]="searchTerm" />
+    </mat-form-field>
+  </div>
+  <section *ngIf="bookList$ | async as list" class="content-section">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid" fxLayoutAlign="center center">
+      <div *ngFor="let item of list">
+          <app-book-card [book]="item"></app-book-card>
+      </div>
     </div>
-</section>
+
+  </section>
 </div>
 

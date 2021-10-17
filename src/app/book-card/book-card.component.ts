@@ -12,10 +12,11 @@ export class BookCardComponent {
   constructor() {}
 
   authorsList(authors: string[]): string {
-    return authors ? authors.join(", ") : "";
+    const list = authors ? authors.join(", ") : "";
+    return list.length <= 60 ? list : `${list.substring(0, 60)}...`;
   }
 
   formatedTitle(title: string): string {
-    return title.length <= 80 ? title : `${title.substring(0, 48)}...`;
+    return title.length <= 48 ? title : `${title.substring(0, 48)}...`;
   }
 }
