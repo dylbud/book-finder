@@ -11,7 +11,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { BookCardComponent } from './book-card/book-card.component';
+import { BookCardComponent } from "./book-card/book-card.component";
 
 @NgModule({
   declarations: [AppComponent, BookListComponent, BookCardComponent],

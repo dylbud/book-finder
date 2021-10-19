@@ -1,7 +1,9 @@
-<mat-card>
+<div class="flip-container">
+  <mat-card class="flippable" [@flippable]="'begin'"> 
     <mat-card-title-group>
       <mat-card-title>{{formatedTitle(book.title)}}</mat-card-title>
       <mat-card-subtitle>{{authorsList(book.authors)}}</mat-card-subtitle>
     </mat-card-title-group>
       <img mat-card-image [src]="book.imageLinks?.smallThumbnail" >
   </mat-card>
+</div>
