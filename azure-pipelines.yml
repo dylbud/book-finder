@@ -29,7 +29,7 @@ steps:
 
   - task: AzureWebApp@1
     inputs:
-      azureSubscription: 'Azure subscription 1(c7069b1c-c8b0-494f-86c1-6d638da2309c)'
+      azureSubscription: 'BookFinderAzureServiceConnection'
       appType: 'webApp'
       appName: 'book-finder'
       package: '$(Pipeline.Workspace)/s/dist/book-finder'
