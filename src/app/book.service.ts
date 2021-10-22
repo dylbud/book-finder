@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { ContentChild, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map, max, tap } from "rxjs/operators";
 import { environment } from "src/environments/environment";
@@ -19,6 +19,7 @@ export class BookService {
     if (queryString.trim().length > 0) {
       const url: string = `${this.booksApi}?q=${queryString}&key=${this.apiKey}&maxResults=${maxResults}`;
       data$ = this.http.get<any>(url).pipe(
+        // tap(console.log),
         map((data) => {
           if (data.items) {
             return data.items.map((b) => {
@@ -26,7 +27,8 @@ export class BookService {
                 authors: b.volumeInfo.authors,
                 title: b.volumeInfo.title,
                 publishedDate: b.volumeInfo.publishedDate,
-                imageLinks: b.volumeInfo.imageLinks
+                imageLinks: b.volumeInfo.imageLinks,
+                previewLink: b.volumeInfo.previewLink
               };
               return book;
             });

@@ -1,9 +1,9 @@
-<div class="card-container">
-  <mat-card [@pageIsLoaded]="isLoaded ? 'end' : 'begin'"> 
+<div class="card-container" (click)="goToBookPreview(book.previewLink)">
+  <mat-card [@pageIsLoaded]="isLoaded"> 
     <mat-card-title-group>
       <mat-card-title>{{formatedTitle(book.title)}}</mat-card-title>
       <mat-card-subtitle>{{authorsList(book.authors)}}</mat-card-subtitle>
     </mat-card-title-group>
-      <img mat-card-image [src]="book.imageLinks?.smallThumbnail" [@pageIsLoaded]="isLoaded ? 'end' : 'begin'">
+      <img mat-card-image [src]="book.imageLinks?.smallThumbnail" [@pageIsLoaded]="isLoaded">
   </mat-card>
 </div>

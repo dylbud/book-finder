@@ -3,6 +3,7 @@ export interface IBook {
   title: string;
   publishedDate: Date;
   imageLinks: IImageLinks;
+  previewLink: string;
 }
 
 export interface IImageLinks {

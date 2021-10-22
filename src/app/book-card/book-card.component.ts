@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, Input, OnInit } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from "@angular/core";
 import { delay } from "rxjs/operators";
 import { IBook } from "../interfaces";
 import { trigger, state, style, animate, transition } from "@angular/animations";
+import { NONE_TYPE } from "@angular/compiler";
 
 @Component({
   selector: "app-book-card",
@@ -10,7 +11,7 @@ import { trigger, state, style, animate, transition } from "@angular/animations"
   animations: [
     trigger("pageIsLoaded", [
       state(
-        "end",
+        "true",
         style({
           transform: "rotateY(0deg)",
           height: "*",
@@ -18,20 +19,28 @@ import { trigger, state, style, animate, transition } from "@angular/animations"
         })
       ),
       state(
-        "begin",
+        "false",
         style({
           transform: "rotateY(90deg)",
           height: "0px",
           opacity: 0
         })
       ),
-      transition("begin => end", [animate("1000ms ease-in")])
+      transition("false => true", [animate("500ms ease-in")])
     ])
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookCardComponent implements AfterViewInit {
   @Input() book: IBook;
   isLoaded = false;
+  numberOfTicks = 0;
+
+  constructor(private ref: ChangeDetectorRef) {
+    setInterval(() => {
+      ref.markForCheck();
+    }, 0);
+  }
 
   ngAfterViewInit() {
     this.isLoaded = true;
@@ -44,5 +53,9 @@ export class BookCardComponent implements AfterViewInit {
 
   formatedTitle(title: string): string {
     return title.length <= 48 ? title : `${title.substring(0, 48)}...`;
+  }
+
+  goToBookPreview(previewLink: string) {
+    window.open(previewLink);
   }
 }
