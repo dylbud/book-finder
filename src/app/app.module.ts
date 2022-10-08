@@ -12,9 +12,11 @@ import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { BookCardComponent } from "./book-card/book-card.component";
+import { MemoryGridComponent } from "./memory-grid/memory-grid.component";
+import { MemoryTileComponent } from './memory-tile/memory-tile.component';
 
 @NgModule({
-  declarations: [AppComponent, BookListComponent, BookCardComponent],
+  declarations: [AppComponent, BookListComponent, BookCardComponent, MemoryGridComponent, MemoryTileComponent],
   imports: [
     ReactiveFormsModule,
     BrowserModule,

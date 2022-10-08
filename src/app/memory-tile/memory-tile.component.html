@@ -1,0 +1,12 @@
+<div class="card-container">
+    <div class="card" (click)="cardClicked()" [@cardFlip]="data.state">
+        <div class="face back">
+            <img mat-card-image src="../../assets/book-cover.jpeg">
+        </div>
+        <div class="face front">
+            <img mat-card-image [src]="data.imageUrl">
+        </div>
+    </div>
+s</div>
+
+
